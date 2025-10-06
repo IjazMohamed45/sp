@@ -1,0 +1,43 @@
+sudo apt update
+sudo apt-get install libomp-dev 
+
+nano fn.c
+
+
+gcc -fopenmp fn.c -o fn
+
+./fn
+
+
+
+#include <stdio.h>
+#include <omp.h>
+
+int main() {
+    #pragma omp parallel
+    {
+        int id = omp_get_thread_num();   
+        int total = omp_get_num_threads(); 
+        printf("Hello from thread %d out of %d threads\n", id, total);
+    }
+    return 0;
+}
+
+
+#include <stdio.h>
+#include <omp.h>
+
+int main() {
+    int n = 10;
+    int sum = 0;
+
+    // Parallel for loop with reduction (each thread adds to sum safely)
+    #pragma omp parallel for reduction(+:sum)
+    for (int i = 1; i <= n; i++) {
+        sum += i;
+        printf("Thread %d added %d, partial sum = %d\n", omp_get_thread_num(), i, sum);
+    }
+
+    printf("Final Sum of 1 to %d = %d\n", n, sum);
+    return 0;
+}
