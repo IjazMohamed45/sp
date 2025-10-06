@@ -15,7 +15,7 @@ wget -c https://downloads.apache.org/spark/spark-4.0.1/spark-4.0.1-bin-hadoop3.t
 
 tar xvf spark-4.0.1-bin-hadoop3.tgz
 
-sudo mv spark-3.5.2-bin-hadoop3 /usr/local/spark
+sudo mv spark-4.0.1-bin-hadoop3 /usr/local/spark
 
 go to root user 
 go to /usr/loacl/spark 
@@ -61,6 +61,7 @@ spark-submit wordcount.py
 
 ls output
 cat output/part-00000
+
 
 
 
